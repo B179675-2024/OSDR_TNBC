@@ -27,7 +27,7 @@ Goals:
 - Pull succesfull, version-control environment in place and ready for use.
 - Adjusted bashrc proxy to work with conda (http address in the https setting). Created a fresh conda environment, 'osdr', for the project from an environment.yml file (that will be updated with exports as needed). Environment features Python 3.12.2 to start with.
 - Data: device mounted on the workstation. fstab edited so that it can remain mounted every reboot. Soft link to the main table 'cell_table_bothneighbourhoods.csv' created in a data directory adjacent to my repository clone.
-- Installed jupyter lab if required on the workstation, downloaded main data table for faster data exploration on jupyter locally if workstation is ever unavailable. Succesfully ran jupyterlab from the workstation [(requires linking ports)](https://towardsdatascience.com/access-remote-code-in-a-breeze-with-jupyterlab-via-ssh-8c6a9ffaaa8c/).
+- Installed jupyter lab if required on the workstation. Succesfully ran workstation's jupyterlab remotely [(requires linking ports)](https://towardsdatascience.com/access-remote-code-in-a-breeze-with-jupyterlab-via-ssh-8c6a9ffaaa8c/).
 
 #### Thursday 22/05
 
