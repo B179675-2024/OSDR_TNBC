@@ -22,4 +22,6 @@ Goals:
 
 #### Wednesday 21/05
 
-- GitHub token approved, repository cloned to the workstation, tested token with first commit (successful).
+- GitHub token approved, repository cloned to the workstation, tested token with first commit.
+- Git push with token succesfull, then tested pulling.
+
