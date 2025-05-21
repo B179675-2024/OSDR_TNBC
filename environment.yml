@@ -1,4 +1,7 @@
 name: osdr
 channels:
   - defaults
-prefix: /home/gabinrousseau/miniconda3/envs/osdr
+  - conda-forge
+dependencies:
+  - python>=3.12
+
