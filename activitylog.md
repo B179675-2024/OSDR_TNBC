@@ -8,7 +8,7 @@ The log is arranged in a weekly basis with a list of key goals/achievements when
 ## Week 0 | 20/05 - 23/05
 Goals: 
 
-- [ ] Prepare version-controlled work environment for the project.
+- [X] Prepare version-controlled work environment for the project.
  
 #### Tuesday 20/05
 - Had first meeting with Linus. About proposal: highlighted that some extra explanatory figures adapted from the key references would have been a really positive addition; overall positive.
@@ -24,4 +24,5 @@ Goals:
 
 - GitHub token approved, repository cloned to the workstation, tested token with first commit.
 - Git push with token succesfull, then tested pulling.
+- Pull succesfull, version-control environment in place and ready for use.
 
