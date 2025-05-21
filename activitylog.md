@@ -25,4 +25,5 @@ Goals:
 - GitHub token approved, repository cloned to the workstation, tested token with first commit.
 - Git push with token succesfull, then tested pulling.
 - Pull succesfull, version-control environment in place and ready for use.
+- Adjusted bashrc proxy to work with conda (http address in the https setting). Created a fresh environment, 'osdr', for the project and exported the yml for it to the repo.
 
