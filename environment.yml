@@ -1,0 +1,4 @@
+name: osdr
+channels:
+  - defaults
+prefix: /home/gabinrousseau/miniconda3/envs/osdr
