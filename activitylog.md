@@ -21,5 +21,5 @@ Goals:
 - Github: created repository, created fine-grained token (pending), will use it to clone the repository on my session when approved.
 
 #### Wednesday 21/05
-   
-  
+
+- GitHub token approved, repository cloned to the workstation, tested token with first commit (successful).
