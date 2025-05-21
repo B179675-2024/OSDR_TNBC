@@ -26,4 +26,4 @@ Goals:
 - Git push with token succesfull, then tested pulling.
 - Pull succesfull, version-control environment in place and ready for use.
 - Adjusted bashrc proxy to work with conda (http address in the https setting). Created a fresh environment, 'osdr', for the project and exported the yml for it to the repo.
-
+- Data: device mounted on the workstation. fstab edited so that it can remain mounted every reboot. Soft link to the main table 'cell_table_bothneighbourhoods.csv' created in a data directory adjacent to my repository clone.
