@@ -34,7 +34,10 @@ Goals:
 
 #### Friday 23/05
 - Old user data cleaned, VS Code Server installed succesfully (this entry is written _via_ its file explorer).
-- 
+- Installed quarto, used it to render a placeholder notebook that I will probably use for some notes or presentations. (And will write the dissertation following a similar format). Got to load the data on a data exploration notebook, the symbolic link works fine.
 - Worked on designing an initial implementation plan, keeping in mind the first goal is to repeat the validation by rescuing simulated data results described in Figure S2 of Somer _et al._.
 
-## Week 1 
+## Week 1 | 26/05 - 30/05
+Goals:
+
+#### Monday 26/05
