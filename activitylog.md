@@ -33,4 +33,8 @@ Goals:
 - Prepared VS Code to interact with the workstation through the Remote - SSH extension. Should be compatible with Jupyter and Quarto for notebooks and dissertation writing. To do so, I had to prepare ssh key autentication to remove the need to log in with a password every time, and add a local .ssh/config file that VS code can recognise for easy connection. VS Code needs to install VSC Server on the remote machine (in my user home dir) to work, although there isn't enough space on the disk to complete installation. I notified Linus to help as sudo priviledges are needed to check what can be safely removed, hopefully that will lead to a good solution.
 
 #### Friday 23/05
+- Old user data cleaned, VS Code Server installed succesfully (this entry is written _via_ its file explorer).
+- 
+- Worked on designing an initial implementation plan, keeping in mind the first goal is to repeat the validation by rescuing simulated data results described in Figure S2 of Somer _et al._.
 
+## Week 1 
