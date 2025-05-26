@@ -38,6 +38,10 @@ Goals:
 - Worked on designing an initial implementation plan, keeping in mind the first goal is to repeat the validation by rescuing simulated data results described in Figure S2 of Somer _et al._.
 
 ## Week 1 | 26/05 - 30/05
-Goals:
+Goals: 
+
+- [ ] Program an ODE to phase portrait component to work with cell circuit models.
+- [ ] Program the data simulation component for OSDR evaluation.
 
 #### Monday 26/05
+- Supervisor meeting: Discussed how the authors approached their method validation step. Authors should provide some information with how ki67 relates to the final sampling step described under "Validating OSDR by simulating known dynamical models". It's not an absolute necessity for me to use the same known dynamical models as Somer _et al._, since the key aspect of the validation stage is to see if OSDR can estimate expected dynamics (assuming the data used for this estimation is sensibly biased towards the expected dynamics.) The authors reference Figs S2C-G, but really the figures to look at for the step start at S2G, esp. S2H. I will start with the validation step (up to the data simulation part). The cellcircuits repository is a good starting point to help me work with setting a known model (see analysis.py in cellcircuits) and plotting a phase portrait for it (plotting.py). The general workflow will be to formulate the known reference with ODEs (integrate with _e.g._ scipy odent), then compute fixed points and plot nullclines (known model only, this won't apply to the estimated dynamics for simulated data).
