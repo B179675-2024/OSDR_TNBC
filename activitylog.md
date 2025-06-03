@@ -53,5 +53,13 @@ Goals:
 
 ## Week 2 | 02/06 - 06/06
 Goals:
+- [ ] Program an ODE to phase portrait component to work with cell circuit models.
+- [ ] Program the data simulation component for OSDR evaluation.
 
 #### Monday 02/06
+- Read up further into types of ODEs and ODE solving, which made the approach to the ground truth clearer.
+
+#### Tuesday 03/06
+- Supervisor meeting: discussed cellcircuits code, my bedrock code for random tissues and how I can formulate my ODEs to get something SIMILAR to fig. S2H. I was thinking initially about a simple linear equation with dX/dt = k*[M] - c, which could work, but the rate would essentially be a generalistic proliferation rate, which would have to be negative since the density goes down when the tissue is overpopulated. It would be more sensible to actually follow the neighbourhood dynamics equation dX/dt = [X](p^+([X]) - p^-([X])), where p+ can be a function of X, and p- a constant for simplicity (in any case, that remains a second order equation which will make the parameter choice a little more complex). There was an interesting bit of discussion about comparing my KDE neighbourhood plot with the cell-specific distribution mabs found in S2H and below. although the phrasing is different, it seems my interpretation was correct, but I would need to create two separate plots for both cell types.
+
+#### Wednesday 04/06
