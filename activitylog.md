@@ -64,6 +64,6 @@ Goals:
 
 #### Wednesday 04/06
 - Looked into the ODE I can sensibly use given the trends and steady states we expect. Went for a simple autocatalysis-like logistic equation (as discussed yesterday) with dX/dt=aX - bX**2. _A priori_ aiming for a steady state of X=10000, we must have a=10000b. Played around with ChatGPT, which estimated with parameter fitting using this equation format and the S2H figure (assuming the divion-death rates correspond to dX/dt, which is probably wrong...) that the optimal solution didn't make sense (negative a) for this equation format.
-- 3 figures for neighbourhood plotting: one with superposed neighbourhood profiles for both cell types (M/F), or separately. [Neighbourhood profiles of a random uniform tissue prior to stochastic profileration](https://github.com/Schumacher-group/OSDR_TNBC/blob/main/logfigs/firstneighbourhoods.png)
+- 3 figures for neighbourhood plotting: one with superposed neighbourhood profiles for both cell types (M/F), or separately. ![Neighbourhood profiles of a random uniform tissue prior to stochastic profileration.](https://github.com/Schumacher-group/OSDR_TNBC/blob/main/logfigs/firstneighbourhoods.png)
 
 #### Thursday 05/06
