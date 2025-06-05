@@ -68,5 +68,6 @@ Goals:
 
 #### Thursday 05/06
 - Changed ODE definition with the new assumption that S2H plots refer to cell density as a log2 of the neighbour cell counts. Added parameter fitting code (using scipy.optimize.curve_fit) co-written by ChatGPT-4o that aims to get the best a and b values constrained to a SS of 16 (log2(16)=4), with the division-death rate substraction matching S2H (assuming this value is a-bX). Started adjusting the phase portrait code for this ODE, should be complete tomorrow.
+- Results of the parameter fitting suggest that my ODE format really can't reproduce the exact same progression of proliferation rates, although there is some additional difficulty in figuring out what that means in a mathematical sense for now. If my assumption is correct, then my isn't suitable for a 1:1 reproduction of S2H, but it definitely can produce the same general trends (stable SS at 16 cells, decrease in overpopulation, increase in underpopulation).
 
 #### Friday 06/06
