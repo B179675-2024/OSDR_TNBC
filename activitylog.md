@@ -67,3 +67,6 @@ Goals:
 - 3 figures for neighbourhood plotting: one with superposed neighbourhood profiles for both cell types (M/F), or separately. ![Neighbourhood profiles of a random uniform tissue prior to stochastic profileration.](https://github.com/Schumacher-group/OSDR_TNBC/blob/main/logfigs/firstneighbourhoods.png)
 
 #### Thursday 05/06
+- Changed ODE definition with the new assumption that S2H plots refer to cell density as a log2 of the neighbour cell counts. Added parameter fitting code (using scipy.optimize.curve_fit) co-written by ChatGPT-4o that aims to get the best a and b values constrained to a SS of 16 (log2(16)=4), with the division-death rate substraction matching S2H (assuming this value is a-bX). Started adjusting the phase portrait code for this ODE, should be complete tomorrow.
+
+#### Friday 06/06
