@@ -53,8 +53,8 @@ Goals:
 
 ## Week 2 | 02/06 - 06/06
 Goals:
-- [ ] Program an ODE to phase portrait component to work with cell circuit models.
-- [ ] Program the data simulation component for OSDR evaluation.
+- [X] Program an ODE to phase portrait component to work with cell circuit models.
+- [X] Program the data simulation component for OSDR evaluation.
 
 #### Monday 02/06
 - Read up further into types of ODEs and ODE solving, which made the approach to the ground truth clearer.
@@ -71,3 +71,11 @@ Goals:
 - Results of the parameter fitting suggest that my ODE format really can't reproduce the exact same progression of proliferation rates, although there is some additional difficulty in figuring out what that means in a mathematical sense for now. If my assumption is correct, then my isn't suitable for a 1:1 reproduction of S2H, but it definitely can produce the same general trends (stable SS at 16 cells, decrease in overpopulation, increase in underpopulation).
 
 #### Friday 06/06
+- Interacted with ELM (ChatGPT-4o) to adapt from the cellcircuits code a simplified phase portrait plot for the known model. I'm using fsolve to get nullclines given the steady-state expectation I already known, and also to confirm expected fixed points (including unstable ones). I'm using Harvard's autograd library to decide whether an FP is stable or not based on the real component of the Jacobian's eigenvalues (if all negative: stable). There is an issue in reproducing the S2H figure though, and that is linked to the log2 nature of my axes. I am getting streamlines over a log2 space (with some tweaking because plt.streamplot only takes linearly distributed points.) which means that covering the 0 axes or negatives is troublesome: I can't properly show 0 on a log scale, only approach it, is that what Somer et al do? With the streamlines at 0 behaving as expected close to 0, their portraits might not use a log scale. The question for me is: am I right in designing the ODE relative to the number of cells and then effectively plotting things over a log2 scale, or would it best to think about things in terms of cell density, which DOES correspond to the log2 of the cell number? I fear this just confuses things though, but if it's an worthwhile adaptation, that means this is a variable that needs to be tracked in the random sim component.
+
+## Week 3 | 09/06 - 13/06
+Goals:
+
+
+#### Monday 09/06
+- 
