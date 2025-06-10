@@ -75,7 +75,16 @@ Goals:
 
 ## Week 3 | 09/06 - 13/06
 Goals:
-
+- [ ] Toy with the ODEs and see if we can better explain S2H by including for example a Hill function.
+- [ ] Parallelize simulation and lengthen to observe a good comparison to the S2H neighbourhood distribution figures.
+- [ ] Begin model inference, focus on getting regressions for the simulated tissue and get a stochastic model equation that can contribute to the inferred phase portrait (Fig2).
 
 #### Monday 09/06
-- 
+- Stochastic proliferation written, accompanied by plots. The function takes a tissue dataframe, a steps (n) argument and optionally a time argument that can modify the rates for faster proliferation over time (try to get results without though).
+
+#### Tuesday 10/06
+- Supervisor meeting: discussed progress, agreed that based on the curve fitting and the phase portrait the equation doesn't quite fit. There's probably a division component (eg Hill, see goals). With my 200 steps, it isn't enough to really showcase the validity of my simulating code, to be extended. I can now start setting up model inference.
+- Careful with the log2 scale plots (that use log-transformed data), the KDE is applied on log data, so all interpretations are log-scale specific!
+
+#### Wednesday 11/06
+
