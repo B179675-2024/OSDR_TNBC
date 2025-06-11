@@ -88,3 +88,5 @@ Goals:
 
 #### Wednesday 11/06
 
+- Reworked fixed point stability determination to include semi-stability (no jacobian eigenvalues > 0, but not all strictly < 0.) Didn't change current phase portrait.
+- Used Pool().starmap to enable parallelisation of what was first in a loop through tissue df row ids. Now adapted to a cell_action function that is fed to starmap. Performance gain seems to be about 30% (from 1.30it/s to 1.70it/s). After n=3000 steps, I am getting results that diverge a bit from expectations with two peaks and neighbourhoods that are too enriched.
