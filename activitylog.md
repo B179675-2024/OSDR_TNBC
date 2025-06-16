@@ -76,7 +76,7 @@ Goals:
 ## Week 3 | 09/06 - 13/06
 Goals:
 - [ ] Toy with the ODEs and see if we can better explain S2H by including for example a Hill function.
-- [ ] Parallelize simulation and lengthen to observe a good comparison to the S2H neighbourhood distribution figures.
+- [X] Parallelize simulation and lengthen to observe a good comparison to the S2H neighbourhood distribution figures.
 - [ ] Begin model inference, focus on getting regressions for the simulated tissue and get a stochastic model equation that can contribute to the inferred phase portrait (Fig2).
 
 #### Monday 09/06
@@ -90,3 +90,17 @@ Goals:
 
 - Reworked fixed point stability determination to include semi-stability (no jacobian eigenvalues > 0, but not all strictly < 0.) Didn't change current phase portrait.
 - Used Pool().starmap to enable parallelisation of what was first in a loop through tissue df row ids. Now adapted to a cell_action function that is fed to starmap. Performance gain seems to be about 30% (from 1.30it/s to 1.70it/s). After n=3000 steps, I am getting results that diverge a bit from expectations with two peaks and neighbourhoods that are too enriched.
+
+#### Thursday 12/06
+- Compared starting densities close and far from steady state, all reached steady state after n=3000. Somer et al choice of n: "comparable to real data", so a bit off. I can use our data for inspiration and once I have a method for model inference, see how n affects accuracy of model estimation.
+
+#### Friday 13/06
+- Tried curve fitting on different version of the model taking inspiration from adler without growth factors (which is close to makes removal a constant independent of X so...) and an X-dependent logistic regression type term (exponential decay) but results weren't very conclusive. I should probably first focus on model estimation to pinpoint what's the best way to define the model in the phase portrait specifically.
+
+## Week 4 | 16/06 - 20/06
+Goals:
+
+#### Monday 16/06
+- Reworked parallelisation with master and child seeds ahead of a starmap instance (and reworked to function to include a seed argument passed to a number generator). Used this to make a function to parallelise multi-tissue proliferation. Tested on 10 tissues with n=10, running now for 100 tissues with n=1000. Output will be two dfs, one for the starting randomised tissues (between 250 and 9750 cells for each type) and another ("post" df) for the post-proliferation data. Is taking a while, if I run this again I should find a way to better track progress although multiprocessing complicates this (used to tqdm for loops).
+
+#### Tuesday 17/06
