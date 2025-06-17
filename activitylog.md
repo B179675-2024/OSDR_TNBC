@@ -99,8 +99,16 @@ Goals:
 
 ## Week 4 | 16/06 - 20/06
 Goals:
+- [ ] Refactor notebook to import functions rather than have blocks and blocks of definitions.
+- [ ] Finish a correct run of 100 tissue sim and sample as in Somer for a first attempt at model inference.
+- [ ] Explore the model 2^(-aX) - b for curve fitting/phase portrait.
 
 #### Monday 16/06
-- Reworked parallelisation with master and child seeds ahead of a starmap instance (and reworked to function to include a seed argument passed to a number generator). Used this to make a function to parallelise multi-tissue proliferation. Tested on 10 tissues with n=10, running now for 100 tissues with n=1000. Output will be two dfs, one for the starting randomised tissues (between 250 and 9750 cells for each type) and another ("post" df) for the post-proliferation data. Is taking a while, if I run this again I should find a way to better track progress although multiprocessing complicates this (used to tqdm for loops).
+- Reworked parallelisation with master and child seeds ahead of a starmap instance (and reworked to function to include a seed argument passed to a number generator). Used this to make a function to parallelise multi-tissue proliferation. Tested on 10 tissues with n=10, running now for 100 tissues with n=1000. Output will be two dfs, one for the starting randomised tissues (between 250 and 9750 cells for each type) and another ("post" df) for the post-proliferation data. Is taking a while, if I run this again I should find a way to better track progress although multiprocessing complicates this (used to tqdm for loops). Found an error with p_death where F cells were using the M cells rates, now corrected. Just need to rerun the code.
 
+
+#### Tuesday 17/06
+- 100 tissue simulation finished after 4.33 hours. Created some plots to show cell number per tissue and average neighbourhood densities per cell type per tissue (both bar plots, one stacked, one grouped).
+- Supervisor meeting: look for a "screen" method to go back and forth the session run remotely without a need to be constantly online, maybe staying off a notebook will help. Clean up notebook with imports. Could try using a 2d scatterplot that uses different point sizes. Model inference, get the k-cells sample described in Somer et al, calculate p_div/death, record events (but don't act on them), regression between cell densities and events. Try a simpler exponential decay like 2^(-aX) -b. Focus on model inference.
+- 
 #### Tuesday 17/06
