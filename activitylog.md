@@ -110,5 +110,6 @@ Goals:
 #### Tuesday 17/06
 - 100 tissue simulation finished after 4.33 hours. Created some plots to show cell number per tissue and average neighbourhood densities per cell type per tissue (both bar plots, one stacked, one grouped).
 - Supervisor meeting: look for a "screen" method to go back and forth the session run remotely without a need to be constantly online, maybe staying off a notebook will help. Clean up notebook with imports. Could try using a 2d scatterplot that uses different point sizes. Model inference, get the k-cells sample described in Somer et al, calculate p_div/death, record events (but don't act on them), regression between cell densities and events. Try a simpler exponential decay like 2^(-aX) -b. Focus on model inference.
-- 
-#### Tuesday 17/06
+
+#### Wednesday 18/06
+
