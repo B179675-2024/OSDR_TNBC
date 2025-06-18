@@ -112,4 +112,7 @@ Goals:
 - Supervisor meeting: look for a "screen" method to go back and forth the session run remotely without a need to be constantly online, maybe staying off a notebook will help. Clean up notebook with imports. Could try using a 2d scatterplot that uses different point sizes. Model inference, get the k-cells sample described in Somer et al, calculate p_div/death, record events (but don't act on them), regression between cell densities and events. Try a simpler exponential decay like 2^(-aX) -b. Focus on model inference.
 
 #### Wednesday 18/06
+- Finished correct 100 tissue sim, worked out how to clean up notebook by writing function to modules and importing those. Updated environment.yml to reflect all current requirements.
+
+#### Thursday 19/06
 
