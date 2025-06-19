@@ -101,7 +101,7 @@ Goals:
 Goals:
 - [ ] Refactor notebook to import functions rather than have blocks and blocks of definitions.
 - [ ] Finish a correct run of 100 tissue sim and sample as in Somer for a first attempt at model inference.
-- [ ] Explore the model 2^(-aX) - b for curve fitting/phase portrait.
+- [X] Explore the model 2^(-aX) - b for curve fitting/phase portrait.
 
 #### Monday 16/06
 - Reworked parallelisation with master and child seeds ahead of a starmap instance (and reworked to function to include a seed argument passed to a number generator). Used this to make a function to parallelise multi-tissue proliferation. Tested on 10 tissues with n=10, running now for 100 tissues with n=1000. Output will be two dfs, one for the starting randomised tissues (between 250 and 9750 cells for each type) and another ("post" df) for the post-proliferation data. Is taking a while, if I run this again I should find a way to better track progress although multiprocessing complicates this (used to tqdm for loops). Found an error with p_death where F cells were using the M cells rates, now corrected. Just need to rerun the code.
@@ -115,4 +115,4 @@ Goals:
 - Finished correct 100 tissue sim, worked out how to clean up notebook by writing function to modules and importing those. Updated environment.yml to reflect all current requirements.
 
 #### Thursday 19/06
-
+- Explored model options with curve fitting (through scipy.optimize.minimize) trying to leverage 2** or log2, and log2 scaled deaths lead to the best results for sensible rate values, but that creates issues with 0. I have stored some key plots but for now I will focus on X(a-bX) model I already have a phase portrait for to test model estimation, now that I have a full set of simulated data generated properly.
