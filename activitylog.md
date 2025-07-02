@@ -99,8 +99,8 @@ Goals:
 
 ## Week 4 | 16/06 - 20/06
 Goals:
-- [ ] Refactor notebook to import functions rather than have blocks and blocks of definitions.
-- [ ] Finish a correct run of 100 tissue sim and sample as in Somer for a first attempt at model inference.
+- [ ] Refactor notebook to import functions rather than have blocks and blocks of definitions. --> wait until component is done to fully refactor and avoid losing time with kernel loading.
+- [X] Finish a correct run of 100 tissue sim and sample as in Somer for a first attempt at model inference.
 - [X] Explore the model 2^(-aX) - b for curve fitting/phase portrait.
 
 #### Monday 16/06
@@ -116,3 +116,37 @@ Goals:
 
 #### Thursday 19/06
 - Explored model options with curve fitting (through scipy.optimize.minimize) trying to leverage 2** or log2, and log2 scaled deaths lead to the best results for sensible rate values, but that creates issues with 0. I have stored some key plots but for now I will focus on X(a-bX) model I already have a phase portrait for to test model estimation, now that I have a full set of simulated data generated properly.
+
+#### Friday 20/06
+- cell_sampler() takes in a tissue dataset (post-proliferation) and samples 50k cells with replacement. From this sample, 4 child samples are drawn without replacement (respectively), leading to 4 cell datasets from various tissues (with neighbourhood values from their original tissues) with 1k, 5k, 10k, and 25k cells as in Somer et al.
+
+## Week 6 | 23/06 - 27/06
+Goals:
+- [X] Apply model inference to the k-samples from last week.
+- [X] Prepare progress presentation and attend lightning talks.
+
+#### Monday 23/06
+- Applied model inference following the algorithm described, where p+ is the logistic function taking z as w0 + w1\*X1 + w2*X2..., and p- the mean of division observations. These "division observations are first recorded by running the same rng to determine whether a cell divides, dies or persists as in tissue proliferation (the event is simply recorded as 1 if division is determined, otherwise 0, could be -1 if we want to go from binary labels to categorical). Inference method then consists in using scikitlearn's LogisticRegression to fit a cell type-specific logistic regression model on cell neighbourhoods (normally on all cell type neighbourhood columns available, but first tried with the same column as the row's cell type) as features, and division as label. Extract intercept and coefficients (negative coef means with more cells of corresponding type in the neighbourhood, a cell of the fitted type is less likely to divide).
+- Results looked promising, with sensible p+ and p- values at expected steady-state, but need phase-portrait observations to properly evaluate. F cells were fit with F neighbourhoods, M cells with M neighbourhoods (for simplicity given our expectations, but generall)
+
+#### Tuesday to Friday 24/06 - 27/06
+- Presentation. Feedback about simulation figures: rather than the bar plots, it would be better to adjust simulations to record states over a certain t range and plot some key statistics over that time. Comment said explaining what the logistic regression means can be useful. No questions from students, waiting for feedback from programme director.
+
+## Week 6 | 30/06 - 04/07
+Goals:
+- [ ] Make phase portraits for inferred models.
+- [ ] Confirm that the root cause for inappropriate inferred parameters is due to the late SS-like distributions I worked with at first.
+
+#### Monday 30/06
+- Plotted streamlines for the 4 models inferred. Realised that there can actually be a big issue with positive coefficients being inferred, completely twisting the expected relationships between division probability and neighbourhood densities. Only the 10k sample's model had a negative coef for both the F cell ODE and the M cell ODE, leading to a reasonable streamline portrait. The rest, highlighted the reversed dynamics due to positive coefs.
+
+#### Tuesday 01/07
+- Supervisor meeting: to add fixed points, refer to the bottom of figure 2. It might be clever to do repeat samples from the same 50k parent sample (or compare across different t stopping points), rather than run 10 different simulations or so. Streamlines are from one model only in their plots. Fixed points by using fsolve on the ODE system function checking over a wide lattice of points? And using jacobian. I need to check whether the models were prone to have wrong coef signs because the data is spread too closely around the steady state, which impairs the ability to really infer dynamics outside of the steady state. Can do this first by plotting p+ over X from the simulations and plot sigma(z) as a curve over that, if points are too clustered it could help visualise this hypothesized issue. Then, add t step recording in the simulations to try inference on models that proliferated for a shorter time, thus further away from steady state.
+- Beyond that, I should familiarise myself with the BC data, look at ki-67 and see if I can replicate S1B for example.
+
+#### Wednesday 02/07
+- Reviewed notes and recorded progress, had a meeting a King's.
+
+#### Thursday 03/07
+
+
