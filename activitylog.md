@@ -75,9 +75,9 @@ Goals:
 
 ## Week 3 | 09/06 - 13/06
 Goals:
-- [ ] Toy with the ODEs and see if we can better explain S2H by including for example a Hill function.
+- [X] Toy with the ODEs and see if we can better explain S2H by including for example a Hill function.
 - [X] Parallelize simulation and lengthen to observe a good comparison to the S2H neighbourhood distribution figures.
-- [ ] Begin model inference, focus on getting regressions for the simulated tissue and get a stochastic model equation that can contribute to the inferred phase portrait (Fig2).
+- [X] Begin model inference, focus on getting regressions for the simulated tissue and get a stochastic model equation that can contribute to the inferred phase portrait (Fig2).
 
 #### Monday 09/06
 - Stochastic proliferation written, accompanied by plots. The function takes a tissue dataframe, a steps (n) argument and optionally a time argument that can modify the rates for faster proliferation over time (try to get results without though).
@@ -148,5 +148,45 @@ Goals:
 - Reviewed notes and recorded progress, had a meeting a King's.
 
 #### Thursday 03/07
+- Did some light exploration of the BC dataset, recorded key columns of interest to map cells spatially, their type, Ki-67, and what patient they originate from with the FOV.
+- Created plots that show p+ - p- against X, featuring points (hexbins to visualise data density) for cells and their computed probabilities based on the known model, as well as a curve showing the equivalent for the inferred model.
 
+#### Friday 04/07
+- Worked on making more systematic phase portraits for inferred models, by using fsolve on a point lattice to find approximate fixed points, but ran into several value issues, so will stick to streamplots until I can focus more on repeating inference in multiple samples.
+
+## Week 7 | 07/07 - 11/07
+Goals:
+- [ ] Confirm that the root cause for inappropriate inferred parameters is due to the late SS-like distributions I worked with at first.
+
+Notes:
+
+- Rewrote simulation to accept a time step argument t, that defines at which interval of time the tissues are recorded (with a time_step column added to reflect this).
+- Updated sampler and inference code to deal with time column and have rng seed passed as arguments (formerly rng fixed to seed 0).
+- 50k sample part of the code: switched from iloc indexing passed to sampling to loc, column index labels are better than true indexes after the addition of time step data.
+- Ran a new simulation also ending at t=1000, but this time recorded ever 100 time step. The bigger size of the dataframe (10x) had a very negligible impact on performance (a few minutes of difference in a 1h45 minutes process).
+- When applying inference to this dataset (with respect to unique time step data), the seed 0 led to an error as for one of the samples there were no predicted diviviions. Seed 1 completed succesfully.
+- While in the algorithm described, fits use binary division label (0,1), the description of neighbourhood dynamics describe death observations as -1, a potential consideration for inference adjustements, although I don't that should be impactful in the parameter value issue I am running into (moreso about infering death as a function of neighbourhood density on top of division, that shouldn't change).
+- Plotted phase portraits and p+/p- curves for all samples at all time steps. Unfortunately, a strong inconsistency remains in the models which doesn't appear to improve over time (more samples for converging streamlines depending on time step.) By eye, I couldn't associated the different neighbourhood data spreads to really relate to improvements in model fits with respect to the corresponding time step. I note that out of 11 good (convergent streamlines, even highly unbalanced ones) graphs (total graphs: 40), 8 were distributed among 10k+ samples, and no time step had more than 2 good graphs. This leads me to think that the core issue might be more tied to the sample sizes in the samples fed to inference.
+
+## Week 8 | 14/07 - 18/07
+Goals:
+- [ ] 
+
+Meeting:
+
+Notes:
+
+## Week 9 | 21/07 - 25/07
+Goals:
+
+Meeting:
+
+Notes:
+
+## Week 10 (End goal) | 28/07 - 01/08
+Goals:
+
+Meeting:
+
+Notes:
 
