@@ -170,9 +170,16 @@ Notes:
 
 ## Week 8 | 14/07 - 18/07
 Goals:
-- [ ] 
+- [ ] Plots: average cell densities over time
+- [ ] Plots: O vs. X (including logistic regression curve from inference)
+- [ ] Question 1: is sample size inaproppriate for reliable model inference in my implementation?
+- [ ] Question 2: does the difference between known and inference model's mathematical definitions explain the low quality inferences I got in the past two weeks?
 
 Meeting:
+- Since I now have data over time, I should make plots to show that neighbourhood densities are getting succesfully biased towards the known model over time.
+- It's impossible to ascertain the inference is working as expected with the curve plots I currently have, as the known model data does not rely on the labels actually used for training. As a sanity check, I should plot events as a function of neighbourhood composition and plot the logistic curve (p+), similar to what can be found on the wikipedia page for logistic regressions.
+- Q1: Was model inference negatively impacted by sampling? I could try repeating the same sample size with multiple seeds and beyond and see how models end up (for the same tissue).
+- Q2: Is the difference between the known model (only p- is dependent on neighbourhood) and inference model (only p+ is) relevant to the incoherent models? I now have a good reference model to match S2H with inference model formalism they describe, I could try generating data for this and see how inference compares. 
 
 Notes:
 
