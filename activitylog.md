@@ -182,11 +182,38 @@ Meeting:
 - Q2: Is the difference between the known model (only p- is dependent on neighbourhood) and inference model (only p+ is) relevant to the incoherent models? I now have a good reference model to match S2H with inference model formalism they describe, I could try generating data for this and see how inference compares. 
 
 Notes:
+objective 2: use label dict as global variable from inference function.
+Inferred line is basically flat… but it's supposed to be, p+ is very small, as is p-. Reminder: the inferred probability at the steady steady for F (t=)
+
+question 1, ksize: do I get different results with or without time? No I just forgot to specify time when getting the inference.
+
+Generate models for the data at t=1000 10 times, each using a different rng seed (from 0 to 9):
+Total: 40 plots (10 per sample size), I will report on the number of portraits displaying sensible arrow directions (convergent towards a central points, indicating negative regression weights, which implies a correct relationship between cell density and division).
+
+Got a class failure at seed 9, skipping to 10. (i.e., no division predicted which foils regression fitting step)
+
+k1: 0 sensible portraits
+k5: 0
+k10:5
+k25:2
+
+Made a function to quickly check whether models satisfy the conditions leading to good portraits. Confirmed to work (returned correct frequencies for the example above.)
+
+However, if I am checking low sample size, it is pretty painful to find suitable seeds, 11 and 12 failed too. Failed: 19, 20, 22, 23, 25, 26. Total of 9 failures encountered to reach a total of 20 rng seeds with successfull inference.
+
+Profile for first 10 seeds: 0, 0, 0.5, 0.2
+When we go to 20 seeds: 0.05, 0.2, 0.4, 0.25
 
 ## Week 9 | 21/07 - 25/07
 Goals:
+- [ ] Question 2: does the difference between known and inference model's mathematical definitions explain the low quality inferences I got in the past two weeks?
+- [ ] Adjust fit plot to visualise the model curve with its own y axis.
+- [ ] Present size results in table
 
 Meeting:
+- It can be easy to misunderstand/interpret my explanation of the inference mismatches, and saying that no more than 2 good portraits appear per time steps isn't surprising given the skew towards higher sample size. Apparently best performance is at 10k? or rather it doesn't improve past that? This is where we want to compare to a known model that is a proper mathematical match.
+- Slide 4, change over time: looking at other curves, can I confirm that it is stable at 1000, is there a decrease trend like Linus noted for tissue 99. To introduce the wrong model, I'd better first introduce the interest in presenting model quality in the prepublication. Model fits: use a second y axis for the sigmoid curve, maybe use hexbins for points to visualise density.
+- Make a table for size results.
 
 Notes:
 
