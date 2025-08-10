@@ -206,9 +206,9 @@ When we go to 20 seeds: 0.05, 0.2, 0.4, 0.25
 
 ## Week 9 | 21/07 - 25/07
 Goals:
-- [ ] Question 2: does the difference between known and inference model's mathematical definitions explain the low quality inferences I got in the past two weeks?
-- [ ] Adjust fit plot to visualise the model curve with its own y axis.
-- [ ] Present size results in table
+- [X] Question 2: does the difference between known and inference model's mathematical definitions explain the low quality inferences I got in the past two weeks?
+- [X] Adjust fit plot to visualise the model curve with its own y axis.
+- [X] Present size results in table
 
 Meeting:
 - It can be easy to misunderstand/interpret my explanation of the inference mismatches, and saying that no more than 2 good portraits appear per time steps isn't surprising given the skew towards higher sample size. Apparently best performance is at 10k? or rather it doesn't improve past that? This is where we want to compare to a known model that is a proper mathematical match.
@@ -216,11 +216,53 @@ Meeting:
 - Make a table for size results.
 
 Notes:
+- I think it's very likely switching known model may improve things, from a sample size perspective as I am making the phase portrait for it. The logistic model has stronger rates outside of the SS, especially for division.
+
+Since I don't want to pass around minimisation results, I will focus on slight approximations by determining a right value for B based on 3df rounds of a and intercept to get an SS at 16. (If I just pass the .6df shown on the curve fitting graph, the SS is slightly offset of course.)
+
+Phase portrait (and predicted fit using the same equation type as the inference doesn't quite look the same as S2H still, but the rates behave similarly now.)
+
+Confirmed with new phase portrait that the SS is back to 16.
+
+Ran a 100 tissues sim with adjusted rates. 2hours and 1 second, an extra minute to save results.
+
+Seems like simulations went fine overall, but I have noticed an oddity in tissue 7. (note the bar plots are not adapted to time though.)
+
+PORTRAITS ARE VERY PROMISING: ALL 4 were good for seed 0, t=1000.
+
+TIME PORTRAITS: Went wrong, 600-1k 
+700-1k looked bad but convergent, same with 900-1K
+Other than that, it all looked quite good!
+
+SAMPLE SIZE/MULTIPLE SEEDS AT T1000: Only 1k can go wrong, or look bad despite convergence. 3 bad out of 40 (seed range 0 to 9). 
+
+Other issue with the original known model: p+ - p- flatlines (at a low rate) early on the left side so it's harder to get a good skew of division towards the left
+
+Tabled together the good model evaluation over seed ranges.
+
+Printed min/max probabilities in sigmoid plots to define axis boundaries for the twinx adjustment.
 
 ## Week 10 (End goal) | 28/07 - 01/08
 Goals:
+- [X] Get fixed point phase portrait overlaps for multiple sampling-inference runs (1 figure per sample size)
 
 Meeting:
+- Interesting point of discussion, how would inference perform if we simulated according to the Adler model? For the molecule, perhaps using a SS approximation (molecules shouldn't behave as stochastically?)
+- Check how sensitive the phase portrait is to the values I give it. Think of the structures as first context, content then conclusion: applies to the whole level but also each paragraph. for the fit plot: recommended making the blue y axis a bit more consistent.
 
 Notes:
+- Log fit visualisation:
+Tried to put a colorbar for each subplot but it got really messy, so I instead opted to show 1 bar for two plots. Wanted to confirm the bar had the same scale regardless of the given hexbin plot as argument... Confirmed that they are different, need to harmonizer barplots leveraging the hexbin norm argument. Done.
+
+Done switch from scatter to semi-continuous plot to show the logistic fit over the range of neighbour counts featured in the data. A curve is plotted based on 200 points linearly arranged.
+
+Reminder, phase portraits compare 10 simulations, I'll compare 10 rng seeds affecting the sampling. I'm trying to adapt sympy solutions for the ODE system into nullclines/fps that I can plot. Experimented with how sympy symbols could be passed around in expressions and functions and it seemed safer to define the symbol set as a global variable to avoid scope issues (adapting the existing ODE functions to this framework). Too long, it seems the exponentials involved and the value work poorly with symbolic solving, so I do have to find a numerical method.
+
+SUCCESS (with getting fixed points with fsolve despite the ODE system function requiring more arguments, which complicates things with jacobian.) Current limitation though is that it's going to try fetching points for the same four guesses as the known model code.
+
+value bias for initial 4 guesses (0, 16 combinations). (try with 5, 30 combinations : central fixed point found at t100, rng0 but not the unstable points which were estimated to have very small negative values. an option is to add constraints to the sign of points. neither 0.1 nor 1 fixed this, so specifying a guess at 0 is important for those points clearly.) Varied values around a bit more above the 30 range, central fixed point is consistently found. next the question is whether the axis fps are found if I give weird guesses on the second nonzero value (5, 60). I thought I saw the 25k sample plot miss the stable point with the (40,50) guess but it seems it found it after another run, so I suppose there is some fickleness with guesses that are off-mark? It doesn't very worthwhile to set up fsolve to work with a big lattice of points, I think the targetted guesses based on the known model are a simple and appropriate approach given the earlier observations.
+
+Succesfully plotted portraits, Although not as much as the original prepub, we can see an improvement with sample size like this.
+
+Tweaked fit plots to show only 0 and 1 on the left y, and consistent format for right y.
 
